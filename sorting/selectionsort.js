@@ -32,3 +32,4 @@ function insertionSort(arr) {
 
 // Example
 console.log(insertionSort([12, 11, 13, 5, 6]));
+
