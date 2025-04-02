@@ -13,3 +13,5 @@ const bubblesort = (arr) => {
 }
 
 console.log(bubblesort([12,46,6,34,22]))
+
+
