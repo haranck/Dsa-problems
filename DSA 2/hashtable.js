@@ -87,7 +87,7 @@
 
 ////////////////////////////////////////////////////////////////////
 
-//nothing with this simple hashmamp
+//nothing with this simple hashtable
 
 // class Hashtable{
 //     constructor(size){
@@ -142,8 +142,7 @@
 // hash.insert("name","haran")
 // hash.insert("place","Mankery")
 // hash.insert("age",21)
-// hash.insert("age",21)
-// hash.insert("age",21)
+
 
 // console.log(hash.get("name"))
 // console.log(hash.get("place"))
@@ -266,7 +265,7 @@
 //         while(this.table[index]){
 //             if(this.table[index][0] !== key){
 //                 i++
-//                 index = (this.hash1(key) + i * stepsize) % this.size
+//                 index = (index + i * stepsize) % this.size
 //             }
 //         }
 //         this.table[index] = [key,value]
@@ -294,7 +293,7 @@
 //                 return true 
 //             }
 //             i++
-//             index = (this.hash1(key) + i * stepsize) % this.size
+//             index = (index + i * stepsize) % this.size
 //         }
 //         return false
 //     }
@@ -316,3 +315,73 @@
 // hash.print()
 
 
+class HashTable{
+   constructor(size){
+       this.table = new Array(size)
+       this.size = size
+   }
+   hash1(key){
+       let result =0
+       for(let i = 0;i<key.length;i++){
+           result += key.charCodeAt(i)
+       }
+       return result % this.size
+   }
+   hash2(key){
+       let result = 0
+       for(let i = 0;i<key.length;i++){
+           result += key.charCodeAt(i)
+       }
+       return 7 -(result%7)
+   }
+   insert(key,value){
+       let index = this.hash1(key)
+       let stepsize = this.hash2(key)
+       let i = 0
+       
+       while(this.table[index] && this.table[index][0] !== key){
+           i++
+           index = (index + i * stepsize) % this.size
+       }
+       this.table[index] = [key,value]
+   }
+   get(key){
+       let index = this.hash1(key)
+       let stepsize = this.hash2(key)
+       let i = 0
+       while(this.table[index]){
+           if(this.table[index][0]===key){
+               return this.table[index][1]
+           }
+           index = (index +i*stepsize) % this.size
+       }
+       return undefined
+   }
+   remove(key){
+       let index = this.hash1(key)
+       let stepsize = this.hash2(key)
+       let i = 0
+       while(this.table[index]){
+           if(this.table[index][0]===key){
+               this.table[index]=null
+           }
+           index=(index+i*stepsize)%this.size
+       }
+       return false
+   }
+   print(){
+       for(let i =0;i<this.table.length;i++){
+           if(this.table[i]){
+               console.log(i,this.table[i])
+           }
+       }
+   }
+}
+let hash = new HashTable(10)
+hash.insert("name","haran")
+hash.insert("place","mankery")
+hash.insert("age","21")
+hash.insert("pin","6952")
+hash.remove("pin")
+console.log(hash.get("age"))
+hash.print()

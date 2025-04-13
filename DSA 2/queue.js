@@ -103,43 +103,41 @@ circular.print()
 
 // implement queue using stack
 
-// class Myqueue{
+// class Queue{
 //    constructor(){
-//       this.stack1 =[]
-//       this.stack2 =[]
+//        this.stack1 =[]
+//        this.stack2 = []
 //    }
-//    // stack1 =[2,8,6] // lifo so 6 is last but use queue fifo isted of 6 remove insted of 2
-//    // stack2 =[6,8,2]
-
 //    enqueue(value){
-//       return this.stack1.push(value)
+//        this.stack1.push(value)
 //    }
+//    //[2,8,6]
+//    //[6,8,2]
 //    dequeue(){
-//       if(this.stack2.length === 0){
-//          while(this.stack1.length > 0){
-//             this.stack2.push(this.stack1.pop())
-//          }
-//       }
-//       return this.stack2.pop()
+//        if(this.stack2.length === 0){
+//            while(this.stack1.length > 0){
+//                this.stack2.push(this.stack1.pop())
+//            }
+//        }
+//        return this.stack2.pop()
 //    }
 //    front(){
-//       if(this.stack2.length === 0){
-//          while(this.stack1.length >0){
-//             this.stack2.push(this.stack1.pop())
-//          }
-//       }
-//       return this.stack2[this.stack2.length -1]
+//        if(this.stack2.length === 0){
+//            while(this.stack1.length > 0){
+//                this.stack2.push(this.stack1.pop())
+//            }
+//        }
+//        return this.stack2[this.stack2.length - 1]
 //    }
-
-//    isEmpty(){
-//       return this.stack1.length === 0 && this.stack2.length === 0
+//    isempty(){
+//        return this.stack2.length === 0 && this.stack1.length ===0
 //    }
 //    print(){
-//       console.log("Queue",this.stack2)
+//        console.log([...this.stack2].concat(this.stack1))
 //    }
 // }
 
-// const queue = new Myqueue()
+// const queue = new Queue()
 
 // queue.enqueue(2)
 // queue.enqueue(8)
@@ -147,7 +145,7 @@ circular.print()
 
 // // queue.dequeue()
 // console.log(queue.front())
-// console.log(queue.isEmpty());
+// console.log(queue.isempty());
 
 // queue.print()
 
@@ -155,46 +153,46 @@ circular.print()
 
 // linked list reversing
 
-class ListNode {
-   constructor(value) {
-       this.value = value;
-       this.next = null;
-   }
-}
+// class ListNode {
+//    constructor(value) {
+//        this.value = value;
+//        this.next = null;
+//    }
+// }
 
-function mergeSortedLists(l1, l2) {
-   if (!l1) return l2
-   if (!l2) return l1 
+// function mergeSortedLists(l1, l2) {
+//    if (!l1) return l2
+//    if (!l2) return l1 
 
-   if (l1.value < l2.value) {
-       l1.next = mergeSortedLists(l1.next, l2); 
-       return l1;
-   } else {
-       l2.next = mergeSortedLists(l1, l2.next);
-       return l2;
-   }
-}
+//    if (l1.value < l2.value) {
+//        l1.next = mergeSortedLists(l1.next, l2); 
+//        return l1;
+//    } else {
+//        l2.next = mergeSortedLists(l1, l2.next);
+//        return l2;
+//    }
+// }
 
-function printList(head) {
-   let current = head;
-   let result = [];
-   while (current) {
-       result.push(current.value);
-       current = current.next;
-   }
-   console.log(result.join(" -> "));
-}
+// function printList(head) {
+//    let current = head;
+//    let result = [];
+//    while (current) {
+//        result.push(current.value);
+//        current = current.next;
+//    }
+//    console.log(result.join(" -> "));
+// }
 
-let l1 = new ListNode(1);
-l1.next = new ListNode(3);
-l1.next.next = new ListNode(5);
+// let l1 = new ListNode(1);
+// l1.next = new ListNode(3);
+// l1.next.next = new ListNode(5);
 
-let l2 = new ListNode(2);
-l2.next = new ListNode(4);
-l2.next.next = new ListNode(6);
+// let l2 = new ListNode(2);
+// l2.next = new ListNode(4);
+// l2.next.next = new ListNode(6);
 
-let mergedList = mergeSortedLists(l1, l2);
-printList(mergedList); 
+// let mergedList = mergeSortedLists(l1, l2);
+// printList(mergedList); 
 
 
 /////////////////////////////////////////////////////////////////////////////////

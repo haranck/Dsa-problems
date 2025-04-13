@@ -53,29 +53,29 @@
 
 // sort a string using mergeSort
 
-// function stringsort(str){
-//    if(str.length<2) return str
+function stringsort(str){
+   if(str.length<2) return str
 
-//    let middle = Math.floor(str.length/2)
-//    let left = stringsort(str.slice(0,middle))
-//    let right = stringsort(str.slice(middle))
+   let middle = Math.floor(str.length/2)
+   let left = stringsort(str.slice(0,middle))
+   let right = stringsort(str.slice(middle))
 
-//    return merge(left.split(),right.split()).join("")
-// }
-// function merge(left,right){
-//    let sortedArray = []
-//    while(left.length&&right.length){ 
-//       if(left[0]>right[0]){
-//          sortedArray.push(right.shift())
-//       }else{
-//          sortedArray.push(left.shift())
-//       }
-//    }
-//    return [...sortedArray,...left,...right]
-// }
+   return merge(left.split(),right.split()).join("")
+}
+function merge(left,right){
+   let sortedArray = []
+   while(left.length&&right.length){ 
+      if(left[0]>right[0]){
+         sortedArray.push(right.shift())
+      }else{
+         sortedArray.push(left.shift())
+      }
+   }
+   return [...sortedArray,...left,...right]
+}
 
-// console.log(stringsort("hello"))
-// console.log(stringsort("cba"))
+console.log(stringsort("hello"))
+console.log(stringsort("cba"))
 
 /////////////////////////////////////////////////////////////////////////////
 
@@ -106,6 +106,7 @@ console.log(stringsort(["banana", "Apple", "cherry", "grape", "orange", "kiwi"])
 /////////////////////////////////////////////////////////////////////////
 
 // merge two linked list
+
 class LinkedList{
    constructor(value){
        this.value = value

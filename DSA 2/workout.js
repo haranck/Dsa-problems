@@ -585,3 +585,148 @@
 
 
 
+// class Hashtable{
+//     constructor(size){
+//         this.table = new Array (size)
+//         this.size = size
+//     }
+//     hash(key){
+//         let total = 0
+//         for(let i = 0;i<key.length;i++){
+//             total += key.charCodeAt(i)
+//         }
+//         return total % this.size
+//     }
+//     insert(key,value){
+//         const index = this.hash(key)
+//         if(!this.table[index]){
+//             this.table[index] = []
+//         }
+//         this.table[index].push([key,value])
+//     }
+//     get(key){
+//         const index = this.hash(key)
+//         if(!this.table[index])undefined
+//         for(let pair of this.table[index]){
+//             if(pair[0]===key)return pair[1]
+//         }
+//         return undefined
+//     }
+//     remove(key){
+//         const index = this.hash(key)
+//         if(!this.table[index])return null
+        
+//         this.table[index] =  this.table[index].filter(pair=>pair[0]!==key)
+//     }
+//     print(){
+//         for(let i =0;i<this.table.length;i++){
+//             if(this.table[i]){
+//                 console.log(i,this.table[i])
+//             }
+//         }
+//     }
+// }
+// const hash = new Hashtable(50)
+// hash.insert("name","haran")
+// hash.insert("age",21)
+// hash.insert("place","mankery")
+// hash.insert("hey","hoii")
+
+// hash.print()
+
+
+
+
+
+// class Hashtable{
+//     constructor(size){
+//         this.table = new Array(size)
+//         this.size = size
+//         this.count = 0
+        
+//     }
+//     getLoadFactor(){
+//         return this.count / this.size
+//     }
+//     hash(key){
+//         let total = 0
+//         for(let i =0;i<key.length;i++){
+//             total += key.charCodeAt(i)
+//         }
+//         return total % this.size
+//     }
+//     insert(key,value){
+//         let index = this.hash(key)
+//         if(!this.table[index]){
+//             this.table[index] = []
+//         }
+//         this.table[index].push([key,value])
+//         this.count++
+//         if(this.getLoadFactor() > 0.75){
+//             const newSize = Math.floor(this.size*2)
+//             this.rehash(newSize)
+//         }
+//     }
+//     get(key){
+//         let index = this.hash(key)
+//         if(!this.table[index])return undefined
+//         for(let pair of this.table[index]){
+//             if(pair[0]===key)return pair[1]
+//         }
+//         return undefined
+        
+//     }
+//     remove(key){
+//         let index = this.hash(key)
+//         if(!this.table[index])return false
+//         this.table[index] = this.table[index].filter(pair => pair[0]!==key)
+//         this.count--
+//         if(this.getLoadFactor() < 0.3){
+//             let newSize = Math.floor(this.size / 2)
+//             this.rehash(newSize)
+//         }
+//     }
+//     rehash(size){
+//         console.log("resising to : ",size)
+//         this.size = size
+//         this.count = 0
+//         const oldTable = this.table
+//         this.table = new Array(this.size)
+        
+//         for(let i = 0;i<oldTable.length;i++){
+//             let bucket = oldTable[i]
+//             if(bucket){
+//                 for(let j =0;j<bucket.length;j++){
+//                     let [key,value] = bucket[j]
+//                     this.insert(key,value)
+//                 }
+//             }
+//         }
+//     }
+//     print(){
+//        for(let i =0; i<this.table.length;i++){
+//             if(this.table[i]){
+//                 console.log(i,this.table[i])
+//             }
+//         }
+//     }     
+// }
+
+// const hash = new Hashtable(5)
+
+// hash.insert("name","haran")
+// hash.insert("age",21)
+// hash.insert("place","mankery")
+// hash.insert(1,"number")
+// hash.insert("pincode",45613)
+// console.log(hash.get(1))
+// hash.remove(1)
+// hash.remove("place")
+// hash.remove("name")
+// hash.remove("place")
+// hash.print()
+
+
+
+
+
